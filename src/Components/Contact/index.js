@@ -10,7 +10,9 @@ export const Contact = () => {
         title="Product Showcase | Contato "
         description="Entre em contato"
       />
-      <img src={Photograph} alt="Maquina de escrever" />
+      <div className={styles.img}>
+        <img src={Photograph} alt="Maquina de escrever" />
+      </div>
       <div>
         <h1>Entre em contato</h1>
         <ul className={styles.data}>

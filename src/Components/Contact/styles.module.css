@@ -1,7 +1,21 @@
 .contact {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  grid-template-columns: 1fr;
+}
+
+.img {
+  grid-row: 2;
+}
+
+@media screen and (min-width: 580px) {
+  .contact {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .img {
+    grid-row: 1;
+  }
 }
 
 .data {

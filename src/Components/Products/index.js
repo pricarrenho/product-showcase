@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 import { Head } from "../Head";
+import { Loader } from "../Loader";
 
 export const Products = () => {
   const [products, setProducts] = useState(null);
@@ -51,22 +52,7 @@ export const Products = () => {
           <button onClick={getProducts}>Tentar novamente</button>
         </div>
       )}
-      {loading && (
-        <div className={styles["lds-spinner"]}>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      )}
+      {loading && <Loader />}
     </section>
   );
 };

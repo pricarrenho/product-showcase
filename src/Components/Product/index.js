@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./styles.module.css";
 import { Head } from "../Head";
+import { Loader } from "../Loader";
 
 export const Product = () => {
   const [product, setProduct] = useState(null);
@@ -40,15 +41,19 @@ export const Product = () => {
         title={`Product Showcase | ${product?.nome}`}
         description={`Product Showcase | Esse é um produto: ${product?.nome}`}
       />
-      <div>
-        <img src={product?.fotos[0].src} alt={product?.fotos[0].titulo} />
-      </div>
+      {product && (
+        <>
+          <div>
+            <img src={product.fotos[0].src} alt={product.fotos[0].titulo} />
+          </div>
 
-      <div>
-        <h1 className={styles.name}>{product?.nome}</h1>
-        <span className={styles.value}>R$ {product?.preco}</span>
-        <p className={styles.description}>{product?.descricao}</p>
-      </div>
+          <div>
+            <h1 className={styles.name}>{product.nome}</h1>
+            <span className={styles.value}>R$ {product.preco}</span>
+            <p className={styles.description}>{product.descricao}</p>
+          </div>
+        </>
+      )}
 
       {error && (
         <div className={styles.error}>
@@ -56,22 +61,7 @@ export const Product = () => {
           <button onClick={getProduct}>Tentar novamente</button>
         </div>
       )}
-      {loading && (
-        <div className={styles["lds-spinner"]}>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      )}
+      {loading && <Loader />}
     </section>
   );
 };
